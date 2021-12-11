@@ -31,6 +31,17 @@ func examples() {
 	
 	
 // function for taking input options arguments etc
+// derf has a while/do here, but I'm not sure how to do that in Go
+// h) help
+// v) version
+// s) server address
+// f) enumeration file
+// e) enumeration file type
+// \?) Invalid Options
+// If no options given send to help
+// if [[ $server_param == "" ]]; then
+//     novalues
+//     exit 1
 	
 // set global vars from results of previous gobuster,feroxbuster,etc
 // ip=
@@ -42,6 +53,9 @@ func examples() {
 	// check each host in the scan results for $web_ports or $web_portsplus (including other popular/easily exploitable services known to run on weird ports
 	// if $port is found, dial that port to verify host is up
 	// if target up create directory for target in the "loot" folder
+	// Check if site is HTTP
+	// Check if site is HTTPS
+	// Check if enumeration types are supported
 	  // for each host that is up, 
 	    // GO banner grab / timestamp / something to bookmark a kickoff and store
 	      // start crawling the urls for the target in the scanfile
