@@ -40,7 +40,7 @@ func main() {
 	        // dump screenshots, source dumps
 	      // check and signal all tasks done signal to close goroutine
 	    // generate html report from results, zip screenshots and raw files with just the banner grab and the report
-	      // If using Optional attached DB, API or mounted volume can do something for that here
+	      // If using Optional attached DB, API or mounted volume can do something for that here, maybe a messaging Q
 	
 
 	
