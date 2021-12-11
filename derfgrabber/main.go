@@ -24,7 +24,7 @@ func main() {
 // function for checking input
 	// check each host in the scan results for $web_ports or $web_portsplus (including other popular/easily exploitable services known to run on weird ports
 	// if $port is found, dial that port to verify host is up
-	// create directory for target in the "loot" folder
+	// if target up create directory for target in the "loot" folder
 	// banner grab / timestamp / something to bookmark a kickoff and store
 
 	
