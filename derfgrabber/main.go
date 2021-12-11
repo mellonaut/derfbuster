@@ -20,6 +20,16 @@ func main() {
 	
 // Help, Options, examples, versions functions
 	
+func examples() {
+	fmt.Println("Examples:")
+	fmt.Println("\"$ derfgrabber -s http://10.10.10.10 -f <gobusterfile> -e gb\"")
+	fmt.Println("\"$ derfgrabber -s https://10.10.10.10 -f <gobusterfile> -e gb\"")
+	fmt.Println("\"$ derfgrabber -s http://10.10.10.10:8080 -f <feroxbusterfile> -e fb\"")
+	fmt.Println("\"$ derfgrabber -s https://10.10.10.10:4443 -f <ffuf csv file> -e ff\"")
+}
+
+	
+	
 // function for taking input options arguments etc
 	
 // set global vars from results of previous gobuster,feroxbuster,etc
