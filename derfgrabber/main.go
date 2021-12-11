@@ -13,8 +13,15 @@ func main() {
 	}
 	fmt.Println(f.Name(), "Opened a can...")
 
+
+// function for no input values	
 // fmt.Println("[!] ERROR")
 // fmt.Println("No input parameters provided")
+	
+// Help, Options, examples, versions functions
+	
+// function for taking input options arguments etc
+	
 // set global vars from results of previous gobuster,feroxbuster,etc
 // ip=
 // check_http=
@@ -25,6 +32,15 @@ func main() {
 	// check each host in the scan results for $web_ports or $web_portsplus (including other popular/easily exploitable services known to run on weird ports
 	// if $port is found, dial that port to verify host is up
 	// if target up create directory for target in the "loot" folder
-	// banner grab / timestamp / something to bookmark a kickoff and store
+	  // for each host that is up, 
+	    // GO banner grab / timestamp / something to bookmark a kickoff and store
+	      // start crawling the urls for the target in the scanfile
+	        // screenshot each page
+	        // grab html source for each page
+	        // dump screenshots, source dumps
+	      // check and signal all tasks done signal to close goroutine
+	    // generate html report from results, zip screenshots and raw files with just the banner grab and the report
+	      // If using Optional attached DB, API or mounted volume can do something for that here
+	
 
 	
