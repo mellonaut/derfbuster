@@ -3,7 +3,10 @@ package main
 import (
 	"fmt"
 	"os"
-	"flag"
+	"net/http"
+	"io/ioutil"
+	"flag"	
+	"sync"
 )
 
 var current_version = "0.0.1"
@@ -64,13 +67,6 @@ func help(){
 }
 
 
-// Options, 
-
-
-	
-
-	
-	
 // function for taking input options arguments etc
 func options() {
 	h := flag.Bool("h", false, "Get some help.")
@@ -81,7 +77,7 @@ func options() {
 	e := flag.String("e", "", "Input file enumeration type. Supported types:")
 	nr := flag.Bool("nr", false, "Suppress report opening in browser.")
 	p := flag.Bool("p", false, "Polite mode enabled")
-	P := flag.Bool("p", false, "Very Polite mode enabled")
+	vp := flag.Bool("vp", false, "Very Polite mode enabled")
 	\? := flag.Bool("\?", false, "Get some help.")
 }
 
@@ -91,6 +87,8 @@ func options() {
 //     exit 1
 	flag.Parse()
 	args := flag.Args()
+
+
 
 // set global vars from results of previous gobuster,feroxbuster,etc
 // ip=
@@ -104,7 +102,12 @@ func options() {
 	// Check if site is HTTP
 	// Check if site is HTTPS
 	// Check if enumeration types are supported
-	  
+
+	
+
+
+
+
 // Create variables for each enumeration type
 func create_vars()
 // Generate links for Gobuster Use
