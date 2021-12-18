@@ -12,7 +12,7 @@ import (
 )
 
 var (
-	CurrentVersion string = "0.0.1"
+	currentVersion string = "0.0.1"
 	title string = "Derfbuster"
 )
 
@@ -51,7 +51,7 @@ func crash() {
 
 // Version function
 func version() {
-    fmt.Println(CurrentVersion)
+    fmt.Println(currentVersion)
 }
 // Title function
 func display_title() {
