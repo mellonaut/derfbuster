@@ -11,8 +11,15 @@ import (
 	"strings"
 )
 
-var current_version = "0.0.1"
-var title = "Derfbuster"
+// set global vars we will populate from results of previous gobuster,feroxbuster,etc
+// 	BaseURL string IPv4 string port string protocol string
+var url string
+var ip string
+var port string
+var protocol string
+var current_version string = "0.0.1"
+var title string = "Derfbuster"
+
 
 // Function for no input values	
 // func novalues() {
@@ -99,16 +106,8 @@ func options() {
 
 
 
-// set global vars from results of previous gobuster,feroxbuster,etc
-// ### I think we should use a struct here? Create a target object to 
-// ### store what we pull from the scans / create folder from? Ask william
-// // Could be used else where in the larger application?
-// type target struct {
-// 	BaseURL string
-// 	IPv4 string
-// 	port string
-// 	protocol string
-// {
+
+
 
 // ip=
 // check_http=
