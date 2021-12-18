@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
-	"net/http"
+	"net/HTTP"
 	"io/ioutil"
 	"bufio"
 	"flag"	
@@ -11,14 +11,20 @@ import (
 	"strings"
 )
 
+var (
+	currentVersion string = "0.0.1"
+	title string = "Derfbuster"
+)
+
 // set global vars we will populate from results of previous gobuster,feroxbuster,etc
 // 	BaseURL string IPv4 string port string protocol string
-var url string
-var ip string
-var port string
-var protocol string
-var current_version string = "0.0.1"
-var title string = "Derfbuster"
+var (
+	URL string
+	IPv4 string
+	Port string
+	Protocol string
+)
+	
 
 
 // Function for no input values	
@@ -45,7 +51,7 @@ func crash() {
 
 // Version function
 func version() {
-    fmt.Println(current_version)
+    fmt.Println(currentVersion)
 }
 // Title function
 func display_title() {
@@ -56,10 +62,10 @@ func display_title() {
 // Exampoles
 func examples() {
 	fmt.Println("Examples:")
-	fmt.Println("derfbuster -s http://10.10.10.10 -f <gobusterfile> -e gb")
-	fmt.Println("derfbuster -s https://10.10.10.10 -f <ffuf> -e ff")
-	fmt.Println("derfbuster -s http://10.10.10.10:8080 -f <feroxbusterfile> -e fb")
-	fmt.Println("derfbuster -s https://10.10.10.10:4443 -f <ffuf csv file> -e ff")
+	fmt.Println("derfbuster -s HTTP://10.10.10.10 -f <gobusterfile> -e gb")
+	fmt.Println("derfbuster -s HTTPS://10.10.10.10 -f <ffuf> -e ff")
+	fmt.Println("derfbuster -s HTTP://10.10.10.10:8080 -f <feroxbusterfile> -e fb")
+	fmt.Println("derfbuster -s HTTPS://10.10.10.10:4443 -f <ffuf csv file> -e ff")
 }
 
 
@@ -71,7 +77,7 @@ func help(){
     fmt.Println("------      ------------")
     fmt.Println("-h          help")
     fmt.Println("-v          version")
-    fmt.Println("-s[svr]     http(s) server to grab screen shots from")
+    fmt.Println("-s[svr]     HTTP(s) server to grab screen shots from")
     fmt.Println("-f[file]    Output file from which ever enumeration tool was used")
     fmt.Println("-e[value]   Input file enumeration type. Supported types:")
     fmt.Println("                - Feroxbuster - \"fb\"")
@@ -98,23 +104,18 @@ func options() {
 }
 
 // If no options given send to help
-// if [[ $server_param == "" ]]; then
+// if [[ serverParam == "" ]]; then
 //     novalues
 //     exit 1
 	flag.Parse()
 	args := flag.Args()
 
 
-
-
-
-
-// ip=
-// check_http=
-func check_http() {
+// checkHTTP=
+func checkHTTP() {
 	BaseURL := ""
 
-	resp, err := http.Get(BaseURL)
+	resp, err := HTTP.Get(BaseURL)
 
 	if err != nil {
 		fmt.Println(err)
@@ -124,13 +125,13 @@ func check_http() {
 	fmt.Println("Original URL is : ", originalURL)
 	fmt.Println("Final URL is : ", finalURL)
 
-	// Check if served with https 
-	fmt.Println("Is HTTPS ? : ", strings.HasPrefix(finalURL,"https"))
+	// Check if served with HTTPS 
+	fmt.Println("Is HTTPS ? : ", strings.HasPrefix(finalURL,"HTTPS"))
 }
 
 
-// check_https= 
-// check_port= Try starting with this function
+// checkHTTPS= 
+// checkPort= Try starting with this function
 func raw_connect(host string, ports []string) {
     for _, port := range ports {
         timeout := time.Second
@@ -158,17 +159,17 @@ func raw_connect(host string, ports []string) {
 
 
 // Create variables for each enumeration type
-func create_vars()
+func createLinks()
 // Generate links for Gobuster Use
-// If gobuster format parses, print the link in the file and pass it back to $server_param
+// If gobuster format parses, print the link in the file and pass it back to serverParam
 // Else, throw error w/ "does not appear to be a gobuster file"
 	
 // Generate links for Ferox Use
-// If ferox format parses, print the link in the file and pass it back to $server_param
+// If ferox format parses, print the link in the file and pass it back to serverParam
 // Else, throw error w/ "does not appear to be a ferox file"
 
 // Generate links for FFuf Use
-// If ffuf format parses, print the link in the file and pass it back to $server_param
+// If ffuf format parses, print the link in the file and pass it back to serverParam
 // Else, throw error w/ "does not appear to be a ffuf file"
 
 // Generate links for Dirsearch / Dirb/ Dirbuster
@@ -179,8 +180,8 @@ func create_vars()
 func review(){
 
 	fmt.Println("---------------------------------REVIEW---------------------------------")
-	fmt.Println("Input file             $file_param")
-	fmt.Println("File type:             $enum_type")
+	fmt.Println("Input file             fileParam")
+	fmt.Println("File type:             enumType")
 	fmt.Println("Results Dir:           ./$folder_name/")
 	fmt.Println("Image Files Dir:       ./$folder_name/$images")
 	fmt.Println("Aggregated page:       ./$folder_name/$agg_site")
@@ -198,25 +199,25 @@ func review(){
 // for each host that is up
     
 	// if target up create directory for target in the $loot folder 	
-    func create_directories() {
-		// Make directories to put screen shots in
-		// if [ $check_http ]; then
-		// 	mkdir -p ./$folder_name/http-site-images/
+    func createDirs() {
+		// Make dirs to put screen shots in
+		// if [ checkHTTP ]; then
+		// 	mkdir -p ./$folder_name/HTTP-site-images/
 		// else
-		// 	mkdir -p ./$folder_name/https-site-images/
+		// 	mkdir -p ./$folder_name/HTTPS-site-images/
 		// fi
 		// So I think here I need to make it
-		// if check_http == true  
-		check_http, err := os.Mkdir("./$folder_name/http-site-images/")
+		// if checkHTTP == true  
+		checkHTTP, err := os.Mkdir("./$folder_name/HTTP-site-images/")
 		if err != nil {
-			os.Mkdir("./$folder_name/https-site-images/")
+			os.Mkdir("./$folder_name/HTTPS-site-images/")
 		}
 	} 
 	
 	// GO banner grab / timestamp / something to bookmark a kickoff and store
 	      
-	// start crawling the urls for the target in the scanfile
-	func grab_screen_shots_and_aggregate()
+	// start crawling the URLs for the target in the scanfile
+	func grabScreens()
 	
 	// screenshot each page and aggregate using cutycpt?
 	        // grab html source for each page
@@ -242,24 +243,24 @@ func review(){
 // How do I do Polite mode? Run main but without report? How do I rate limit and do review?
 func main() {
 	// Check for input parameters, validate
-	check_input $server_param $file_param $enum_type
+	check_input serverParam fileParam enumType
 	// Set global vars from input parameters
-	create_vars $server_param $file_param $enum_type
+	create_vars serverParam fileParam enumType
 	// fmt.Println(title + version)
 	title
 	
 	// Display review / Verify Actions if Polite mode
-	review $server_param $file_param $enum_type
+	review serverParam fileParam enumType
 
-	// create target directories in $loot folder
-	create_directories 
+	// create target dirs in $loot folder
+	createDirs 
 	// Grab banner grab and store in $loot/$folder_name/
-	banner_grab
+	bannerGrab
 	// Grab screenshots and store in $loot/$folder_name/$agg_site
-	grab_screen_shots_and_aggregate $server_param
+	grabScreens serverParam
 
 	// Pass off to middleware / API Handler module for processing
-	hand_off
+	handOff
 
 	fmt.Println("")
 	fmt.Println("[+] Aggregated Report saved to ./$folder_name/$agg_site")
